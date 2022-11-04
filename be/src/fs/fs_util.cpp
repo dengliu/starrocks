@@ -56,4 +56,24 @@ StatusOr<std::string> md5sum(const std::string& path) {
     return ss.str();
 }
 
+// celonis -- start
+int128 md5sum(const std::string& path) {
+    ASSIGN_OR_RETURN(auto fs, FileSystem::CreateSharedFromString(path));
+    ASSIGN_OR_RETURN(auto file, fs->new_random_access_file(path));
+    ASSIGN_OR_RETURN(auto length, file->get_size());
+    std::unique_ptr<unsigned char[]> buf(new (std::nothrow) unsigned char[length]);
+    if (UNLIKELY(buf == nullptr)) {
+        return Status::MemoryAllocFailed(fmt::format("alloca size={}", length));
+    }
+    RETURN_IF_ERROR(file->read_fully(buf.get(), length));
+    unsigned char result[MD5_DIGEST_LENGTH];
+    MD5(buf.get(), length, result);
+    std::stringstream ss;
+    for (unsigned char i : result) {
+        ss << std::setfill('0') << std::setw(2) << std::hex << (int)i;
+    }
+    return int128(ss.str());
+}
+// celonis -- end
+
 } // namespace starrocks::fs
