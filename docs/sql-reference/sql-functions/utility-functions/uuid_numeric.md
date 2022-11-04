@@ -29,3 +29,5 @@ MySQL > select uuid_numeric();
 +--------------------------+
 1 row in set (0.00 sec)
 ```
+
+### from Deng: add some uuid change
