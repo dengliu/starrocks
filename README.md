@@ -8,6 +8,10 @@
 # Test
 engineer at celonis
 
+
+# Rob
+# Test editing the readme
+
 # StarRocks
 
 StarRocks is a new-generation and high-speed MPP database for nearly all data analytics scenarios. We wish to provide easy and rapid data analytics. Users can directly conduct high-speed data analytics in various scenarios without complicated data preprocessing. Query speed (especially multi-tables JOIN queries) far exceeds similar products because of our streamlined architecture, full vectorized engine, newly-designed Cost-Based Optimizer (CBO) and modern materialized views. We also support efficient real-time data analytics. 
