@@ -12,6 +12,11 @@ namespace starrocks::fs {
 
 StatusOr<std::string> md5sum(const std::string& path);
 
+// celonis -- start
+int128_t md5sum_numeric(const std::string& path);
+// celonis -- end
+
+
 Status list_dirs_files(const std::string& path, std::set<std::string>* dirs, std::set<std::string>* files);
 
 Status list_dirs_files(FileSystem* fs, const std::string& path, std::set<std::string>* dirs,

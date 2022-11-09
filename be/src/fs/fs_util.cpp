@@ -56,4 +56,10 @@ StatusOr<std::string> md5sum(const std::string& path) {
     return ss.str();
 }
 
+// celonis -- start
+int128 md5sum(const std::string& path) {
+    return int128(md5sum(const std::string& path));
+}
+// celonis -- end
+
 } // namespace starrocks::fs
